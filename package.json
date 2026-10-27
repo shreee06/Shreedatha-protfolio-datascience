@@ -1,0 +1,23 @@
+{
+  "name": "retail-data-science-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "\"$npm_node_execpath\" node_modules/vite/bin/vite.js",
+    "build": "\"$npm_node_execpath\" node_modules/vite/bin/vite.js build",
+    "preview": "\"$npm_node_execpath\" node_modules/vite/bin/vite.js preview"
+  },
+  "dependencies": {
+    "lucide-react": "0.469.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^6.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

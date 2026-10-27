@@ -1,0 +1,196 @@
+// Single source of truth for project case studies.
+// All figures come from the CV / project summaries supplied by the author.
+// Repository code has not been reviewed when building this site.
+
+export const categories = ['All', 'Forecasting', 'Recommender Systems', 'Pricing & Promotions', 'Customer Analytics', 'Agentic AI']
+
+export const projects = [
+  {
+    id: 'rossmann',
+    index: '01',
+    visual: 'forecast',
+    category: 'Forecasting',
+    title: 'Retail Demand Forecasting',
+    subtitle: 'Rossmann Store Sales',
+    summary: 'A 42-day, store-level daily sales forecast for 1,115 stores, built under a written protocol committed before modelling, with calibrated 80% prediction intervals.',
+    tags: ['Python', 'LightGBM', 'Pandas', 'Statsmodels', 'Streamlit', 'Pytest'],
+    metrics: [['1,115', 'stores'], ['~1.02M', 'rows'], ['942', 'days'], ['80%', 'prediction intervals']],
+    repo: 'https://github.com/shreee06/rossmann-demand-forecasting',
+    study: {
+      problem: 'Produce store-level daily sales forecasts 42 days ahead for a retail chain, and express the uncertainty of those forecasts rather than only point estimates.',
+      dataset: 'Rossmann store sales: about 1.02 million rows covering 942 days across 1,115 stores. The evaluation uses a single 42-day summer test window and a single retailer.',
+      approach: [
+        'A written evaluation protocol was committed before any modelling began.',
+        'Seasonal and promotion-aware baselines were built first.',
+        'One global LightGBM model was compared against those baselines.',
+        'Uncertainty: quantile models, with split conformal adjustments, produce 80% prediction intervals.',
+      ],
+      implementation: [
+        'Python, Pandas and Statsmodels for data preparation and baselines; LightGBM for the global model.',
+        'Quantile models plus split conformal adjustment for 80% prediction intervals.',
+        'Streamlit app and Pytest test suite (including data-based leakage checks).',
+        'Training used a 20% row sample.',
+      ],
+      results: [
+        'Delivered a 42-day, store-level daily forecast for 1,115 stores.',
+        'Compared promo-aware and seasonal baselines with one global LightGBM model.',
+        'Built 80% prediction intervals with quantile models and split conformal adjustment.',
+        'Estimated that promotion days are associated with about 38% higher sales within stores; this is an association and is described as non-causal.',
+      ],
+      limitations: [
+        'Evaluation covers a single 42-day summer test window.',
+        'Data comes from one retailer, so results may not transfer.',
+        'The ranking of baselines was not stable across periods.',
+        'The model was trained on a 20% row sample.',
+        'The promotion effect is descriptive, not causal.',
+      ],
+    },
+  },
+  {
+    id: 'hm-recsys',
+    index: '02',
+    visual: 'recsys',
+    category: 'Recommender Systems',
+    title: 'Fashion Recommendation Engine',
+    subtitle: 'H&M transactions',
+    summary: 'A two-stage recommender: multi-source candidate generation plus a PyTorch two-tower retriever, reranked by a LightGBM LambdaRank model on 31 features.',
+    tags: ['Python', 'PyTorch', 'LightGBM', 'Pandas', 'Scikit-learn', 'Pytest'],
+    metrics: [['0.0339', 'MAP@12 (held-out week)'], ['+40%', 'vs repurchase baseline'], ['31.8M', 'transactions']],
+    repo: 'https://github.com/Shreee06/Fashion-recommender-system-H-M-data',
+    study: {
+      problem: 'Recommend fashion items to customers from purchase history, and evaluate honestly on future behaviour rather than on data the model could have seen.',
+      dataset: 'H&M transaction data with 31.8 million transactions. Evaluation is on a held-out test week.',
+      approach: [
+        'Stage 1 — candidate generation from repurchase history, item-item collaborative filtering, colour variants and age-group popularity, plus a PyTorch two-tower retrieval model.',
+        'Stage 2 — a LightGBM LambdaRank reranker over 31 features.',
+        'A leakage-safe, time-based evaluation protocol.',
+      ],
+      implementation: [
+        'Multiple candidate sources merged and scored per customer.',
+        'PyTorch two-tower retrieval model for learned candidates.',
+        'LightGBM LambdaRank learning-to-rank reranker with 31 features.',
+        'Automated leakage tests for every feature and every candidate source (Pytest).',
+      ],
+      results: [
+        'Held-out test week MAP@12 of about 0.0339 (95% CI 0.0329–0.0349).',
+        'Strong repurchase baseline: 0.0242, so about +40% relative improvement.',
+        'Recent-popularity baseline: 0.0087.',
+      ],
+      limitations: [
+        'The headline result is a relative improvement over baselines on one held-out week.',
+        'Results are for one held-out test week.',
+        'No other limitations are recorded in the summary used for this page; see the repository for details.',
+      ],
+    },
+  },
+  {
+    id: 'elasticity',
+    index: '03',
+    visual: 'elasticity',
+    category: 'Pricing & Promotions',
+    title: 'Price Elasticity & Promotion Analysis',
+    subtitle: 'Weekly product panel',
+    summary: 'Fixed-effects Poisson and log-log models of price response on a leakage-safe weekly panel, validated on a locked 8-week test period, with a what-if discount simulator.',
+    tags: ['Python', 'Statsmodels', 'Poisson', 'Log-log fixed effects', 'Streamlit', 'Pytest'],
+    metrics: [['~1.07M', 'product-weeks'], ['91,905', 'products'], ['102', 'weeks'], ['5,755', 'products modelled']],
+    repo: 'https://github.com/shreee06/Price-elasticity-promotion-analysis-',
+    study: {
+      problem: 'Estimate how unit sales respond to price changes and promotions, and test whether those estimates hold on weeks the model has not seen.',
+      dataset: 'A weekly price and promotion panel of about 1.07 million product-week records covering 91,905 products over 102 weeks, reconciled exactly to the source transactions. Estimation used 5,755 products.',
+      approach: [
+        'A pre-registered analysis plan and a locked 8-week test period.',
+        'Poisson and log-log models with product and week fixed effects.',
+        'Frozen estimates evaluated out of sample on the test weeks.',
+      ],
+      implementation: [
+        'Leakage-safe construction of the weekly panel in Python.',
+        'Statsmodels Poisson and log-log fixed-effects models.',
+        'Streamlit what-if simulator for discount depth with uncertainty ranges.',
+        'Pytest tests.',
+      ],
+      results: [
+        'Frozen estimates predicted weekly relative changes in unit sales on the 8-week test period, and the coefficient was stable.',
+        'Delivered a what-if discount simulator with uncertainty ranges.',
+      ],
+      limitations: [
+        'About 80% of product-store-weeks lack promotion records.',
+        'Without promotion controls the estimate moves to −1.80, showing sensitivity to promotion data.',
+        'Regular-price elasticity was unstable over time.',
+      ],
+    },
+  },
+  {
+    id: 'customer-intel',
+    index: '04',
+    visual: 'segments',
+    category: 'Customer Analytics',
+    title: 'Retail Customer Intelligence Platform',
+    subtitle: 'UCI Online Retail',
+    summary: 'A reproducible data-audit pipeline, RFM segmentation vs KMeans, a leakage-safe 90-day repeat-purchase model and BG/NBD + Gamma-Gamma value estimates.',
+    tags: ['Python', 'SQL', 'SQLite', 'Pandas', 'Scikit-learn', 'Streamlit', 'Plotly', 'Pytest'],
+    metrics: [['0.743', 'ROC-AUC'], ['0.804', 'PR-AUC'], ['28.5% → 74%', 'Champions → net revenue'], ['116', 'automated tests']],
+    repo: 'https://github.com/shreee06/retail-customer-intelligence',
+    study: {
+      problem: 'Understand who the valuable customers are, which are at risk, and who is likely to buy again, starting from transaction data that first has to be audited and reconciled.',
+      dataset: '541,909 UCI Online Retail transaction rows; 4,334 customers segmented. Documented exclusions cover missing customers, cancellations, non-product lines and 5,268 duplicate copies. Gross spend of about €8.74M reconciles to net spend of about €8.27M.',
+      approach: [
+        'Audit first: documented exclusion rules and gross-to-net reconciliation.',
+        'Segment customers with RFM band rules and compare against KMeans.',
+        'Predict 90-day repeat purchase with a time-based split.',
+        'Estimate 90-day customer value with BG/NBD and Gamma-Gamma models.',
+      ],
+      implementation: [
+        'Python, SQL/SQLite and Pandas for the audit pipeline.',
+        'Scikit-learn for KMeans and logistic regression.',
+        'Tests confirm no training window overlaps the test period.',
+        'Streamlit dashboard with Plotly charts, and 116 automated tests.',
+      ],
+      results: [
+        '28.5% of customers (Champions) account for 74% of net revenue; 262 high-frequency customers were identified as At Risk.',
+        'Repeat-purchase logistic regression: ROC-AUC 0.743 and PR-AUC 0.804, versus 0.684 and 0.704 for a recency-rule baseline (3,314 test customers).',
+        'BG/NBD + Gamma-Gamma ranked customers modestly better than a baseline (Spearman 0.48 vs 0.46).',
+      ],
+      limitations: [
+        'The customer-value model under-predicted total spend by about 37%, so it is documented as a ranking tool only.',
+        'Its ranking advantage over the baseline is modest (0.48 vs 0.46).',
+      ],
+    },
+  },
+  {
+    id: 'agentic',
+    featured: true,
+    index: '05',
+    visual: 'agent',
+    category: 'Agentic AI',
+    title: 'Agentic AI Retail Analytics Assistant',
+    subtitle: 'Natural language → validated read-only SQL',
+    summary: 'A LangGraph assistant that turns plain-English retail questions into validated, read-only SQL, shows the SQL and revenue definition, and refuses what it cannot answer.',
+    tags: ['Python', 'LangGraph', 'Groq API', 'SQLite', 'sqlglot', 'Streamlit', 'Pytest'],
+    metrics: [['108/108', 'unsafe queries blocked'], ['98/98', 'legitimate accepted'], ['37/37', 'answerable correct'], ['22/23', 'correct refusals'], ['738', 'automated tests']],
+    repo: 'https://github.com/shreee06/agentic-retail-analytics',
+    study: {
+      problem: 'Let analysts ask retail questions in plain English without trusting an LLM to run arbitrary SQL or to guess answers the data cannot support.',
+      dataset: 'A cleaned SQLite database rebuilt from the 541,909 UCI Online Retail source rows: 522,446 sales, 8,665 returns and 10,798 excluded rows, reconciled to the source and to project 04.',
+      approach: [
+        'LangGraph workflow: classify → generate SQL → validate → execute → answer.',
+        'Every answer shows the SQL and states the revenue definition (net or gross).',
+        'Unanswerable or vague questions are refused or sent for clarification instead of being guessed.',
+      ],
+      implementation: [
+        'Layered defences on LLM-generated SQL: sqlglot parser, table/column/function allowlists, read-only database connection, SQLite authorizer, timeout and row cap.',
+        'Groq API for LLM calls; Streamlit front end.',
+        '738 automated tests and database reconciliation.',
+      ],
+      results: [
+        'Adversarial test set: 108 of 108 unsafe queries blocked with the database unchanged.',
+        'Legitimate analyst queries: 98 of 98 accepted.',
+        'Frozen 60-question evaluation (gold SQL verified independently in pandas): 37/37 answerable questions correct; 22/23 correct refusals or clarifications.',
+      ],
+      limitations: [
+        'Results are on the project\'s own test sets (108 adversarial, 98 legitimate, 60 evaluation questions) and a single cleaned retail database.',
+        'One of the 23 refusal/clarification cases was not handled correctly.',
+        'A passing adversarial set is not proof that no unsafe query could ever succeed.',
+      ],
+    },
+  },
+]
