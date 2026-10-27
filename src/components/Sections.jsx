@@ -15,14 +15,20 @@ export function About() {
           <p className="pull">{lead}</p>
           {rest.map((t) => <p key={t}>{t}</p>)}
         </Reveal>
-        <Reveal as="ol" className="approach" delay={0.15} aria-label="How I approach a project">
-          {principles.map(([h, t], i) => (
-            <li key={h}>
-              <span className="node" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-              <div><strong>{h}</strong><span>{t}</span></div>
-            </li>
-          ))}
-        </Reveal>
+        <div className="about-side">
+          <Reveal as="figure" className="portrait">
+            <img src={`${import.meta.env.BASE_URL}shreedatha.jpg`} width="720" height="875" alt="Portrait of Shreedatha DS" loading="lazy" decoding="async" />
+            <figcaption>Shreedatha DS · Bengaluru</figcaption>
+          </Reveal>
+          <Reveal as="ol" className="approach" delay={0.15} aria-label="How I approach a project">
+            {principles.map(([h, t], i) => (
+              <li key={h}>
+                <span className="node" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <div><strong>{h}</strong><span>{t}</span></div>
+              </li>
+            ))}
+          </Reveal>
+        </div>
       </div>
     </section>
   )
