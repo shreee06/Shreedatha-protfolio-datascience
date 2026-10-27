@@ -6,10 +6,10 @@ export default function Hero() {
   return (
     <section id="home" className="hero" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow">Data science · Machine learning · Retail &amp; customer analytics</p>
+        <p className="eyebrow">Data science · Machine learning · Analytics</p>
         <h1 id="hero-title">Turning messy data into <em>better decisions.</em></h1>
         <p className="lead">
-          I'm Shreedatha — a data science and analytics postgraduate building practical machine-learning systems for customer intelligence, retail decisions, and safer AI-powered analytics.
+          I'm Shreedatha — a data science and analytics postgraduate building practical machine-learning systems for forecasting, recommendations, customer intelligence, and safer AI-powered analytics.
         </p>
         <div className="btn-row">
           <a className="btn btn-primary" href="#projects"><ArrowDown size={16} aria-hidden="true" /> Explore Projects</a>
@@ -44,7 +44,7 @@ export default function Hero() {
       <dl className="hero-index" aria-label="Portfolio at a glance">
         <div><dt>Case studies</dt><dd>05</dd></div>
         <div><dt>Interactive demos</dt><dd>02</dd></div>
-        <div><dt>Focus</dt><dd>Retail · Customers · Agentic AI</dd></div>
+        <div><dt>Focus</dt><dd>Forecasting · Recommenders · Agentic AI</dd></div>
       </dl>
     </section>
   )

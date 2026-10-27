@@ -107,8 +107,8 @@ export function Contact() {
       <div className="moon-glow" aria-hidden="true" />
       <Reveal>
         <p className="eyebrow">Contact</p>
-        <h2 id="contact-title">Hiring for data science, ML or retail analytics? <em>Let's talk.</em></h2>
-        <p className="lead">I'm open to Data Scientist, Machine Learning, Customer/Retail Analytics and applied AI roles. Email is the quickest way to reach me.</p>
+        <h2 id="contact-title">Hiring for data science, ML or analytics? <em>Let's talk.</em></h2>
+        <p className="lead">I'm open to Data Scientist, Machine Learning Engineer, Data Analyst and applied AI roles, in any industry. Email is the quickest way to reach me.</p>
         <a className="mail-link" href={`mailto:${profile.email}`}><Mail size={26} aria-hidden="true" /> {profile.email} <ArrowUpRight size={22} aria-hidden="true" /></a>
         <div className="btn-row">
           <a className="btn btn-ghost" href={profile.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} aria-hidden="true" /> LinkedIn</a>

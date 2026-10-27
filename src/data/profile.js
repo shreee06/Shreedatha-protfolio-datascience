@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Shreedatha DS',
-  role: 'Data Scientist | Machine Learning | Customer & Retail Analytics',
+  role: 'Data Scientist | Machine Learning | Analytics',
   location: 'Bengaluru, India',
   email: 'dsshreedatha@gmail.com',
   linkedin: 'https://www.linkedin.com/in/shreedatha-d-s',
@@ -11,9 +11,9 @@ export const profile = {
 
 export const about = [
   'I am a Data Science and Analytics postgraduate (MCA, Data Analytics) with strong Python and SQL skills and hands-on machine-learning experience from academic, research and independent work.',
-  'My independent projects focus on retail and customer problems: demand forecasting, recommender systems, price elasticity, customer segmentation and lifetime value, and a safety-conscious natural-language analytics assistant.',
+  'My independent projects apply the same methods to real-world transaction data: demand forecasting, recommender systems, price elasticity, customer segmentation and lifetime value, and a safety-conscious natural-language analytics assistant.',
   'In each one I try to define the evaluation protocol first, guard against leakage, compare against a simple baseline, and write down what the results do not show.',
-  'I am looking for Data Scientist, Machine Learning, Retail/Customer Analytics and applied AI roles.',
+  'I am looking for Data Scientist, Machine Learning Engineer, Data Analyst and applied AI roles across industries.',
 ]
 
 export const principles = [
@@ -63,7 +63,7 @@ export const certifications = [
 export const skills = [
   ['Programming & Data', ['Python', 'SQL', 'R', 'Data manipulation', 'Data cleaning', 'Validation', 'Debugging', 'SQL joins', 'Subqueries', 'Window functions']],
   ['Machine Learning & Statistics', ['Supervised learning', 'Unsupervised learning', 'Regression', 'Classification', 'Feature engineering', 'Model evaluation', 'Hypothesis testing', 'Exploratory data analysis', 'Correlation analysis', 'Predictive modelling']],
-  ['Retail & Customer Analytics', ['Customer lifetime value', 'Propensity models', 'Recommendation systems', 'Candidate generation', 'Learning-to-rank', 'Price elasticity', 'Promotion analysis']],
+  ['Applied Analytics & Modelling', ['Customer lifetime value', 'Propensity models', 'Recommendation systems', 'Candidate generation', 'Learning-to-rank', 'Price elasticity', 'Promotion analysis']],
   ['Data Visualization & BI', ['Excel', 'VLOOKUP', 'Pivot Tables', 'Power Query', 'Tableau', 'Power BI', 'Plotly', 'Streamlit']],
   ['Python Libraries & Tools', ['Pandas', 'NumPy', 'Scikit-learn', 'PyTorch', 'LightGBM', 'SciPy', 'Statsmodels', 'SQLite', 'Pytest', 'Git', 'GitHub']],
   ['Generative AI', ['LLMs', 'Prompt engineering', 'Generative AI', 'Agentic AI', 'LangGraph', 'RAG', 'LLM evaluation', 'NLP', 'Conversational assistants', 'Groq API', 'sqlglot']],
